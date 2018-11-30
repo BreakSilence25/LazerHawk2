@@ -232,6 +232,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\rangeDetector.cs" />
     <Compile Include="Assets\Scripts\CoreBehaviour.cs" />
     <Compile Include="Assets\Scripts\DebrisBehaviour.cs" />
     <Compile Include="Assets\Scripts\EnemyBase.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="Assets\Scripts\ShipBehaviour.cs" />
     <Compile Include="Assets\Scripts\WaveManager.cs" />
     <Compile Include="Assets\Scripts\WeaponBase.cs" />
+    <Compile Include="Assets\WarningBehaviour.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
