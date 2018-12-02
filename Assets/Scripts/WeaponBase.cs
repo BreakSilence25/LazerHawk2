@@ -27,12 +27,6 @@ public class WeaponBase : MonoBehaviour
         gunSound = GetComponent<AudioSource>();
 
 	}
-	
-	
-	void Update ()
-    {
-		
-	}
 
     public void Shoot()
     {
