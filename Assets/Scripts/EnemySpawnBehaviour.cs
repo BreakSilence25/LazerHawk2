@@ -6,15 +6,11 @@ public class EnemySpawnBehaviour : MonoBehaviour
 {
 
     public EnemyBase enemy;
+    public Transform[] spawnPoints;
 
 	void Start ()
     {
         transform.LookAt(GameObject.Find("Core").transform);
-	}
-	
-	void Update ()
-    {
-		
 	}
 
     [ContextMenu("Spawn Enemy")]

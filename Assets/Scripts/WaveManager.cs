@@ -22,6 +22,7 @@ public class WaveManager : MonoBehaviour
     }
 
     public Wave[] waves;
+    public EnemySpawnBehaviour spawner;
 
     private int nextWave = 0;
 
@@ -37,6 +38,8 @@ public class WaveManager : MonoBehaviour
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
+        spawner = GameObject.Find("EnemySpawn").GetComponent<EnemySpawnBehaviour>();
+        
     }
 
     private void Update()
@@ -121,6 +124,9 @@ public class WaveManager : MonoBehaviour
     void SpawnEnemy(Transform _enemy)
     {
         Debug.Log("Spawning Enemy " + _enemy);
-        Instantiate(_enemy, transform.position, transform.rotation);
+        for (int i = 0; i < spawner.spawnPoints.Length; i++)
+        {
+            Instantiate(_enemy, spawner.spawnPoints[i].transform);
+        }
     }
 }

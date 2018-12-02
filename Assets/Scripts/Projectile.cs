@@ -15,7 +15,6 @@ public class Projectile : FadeEffect
 	void Start ()
     {
         projectileRigidbody = GetComponent<Rigidbody>();
-
         StartCoroutine(Fade());
     }
 	

@@ -57,13 +57,14 @@ MonoBehaviour:
     enemyCount: 1
     rate: 1
   - waveName: second wave
-    enemy: {fileID: 4898166811556810, guid: 0c8e453462968054eb7df5703470b814, type: 2}
+    enemy: {fileID: 4140650426431590, guid: e37aeeaed0b764d4a9fb8911bc17c7d8, type: 2}
     enemyCount: 2
     rate: 1.5
   - waveName: final wave
     enemy: {fileID: 4898166811556810, guid: 0c8e453462968054eb7df5703470b814, type: 2}
     enemyCount: 3
     rate: 3
+  spawner: {fileID: 0}
   timeBetweenWaves: 5
   waveCountdown: 0
   searchCountdown: 1

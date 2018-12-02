@@ -5,9 +5,13 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour, IKillable
 {
 
+    public LayerMask coreLayer;
 
     public int health;
     public float moveSpeed;
+    public int coreDamage = 25;
+
+    public float moveDistance;
 
     [SerializeField]
     private enemyType type;
@@ -20,17 +24,47 @@ public class EnemyBase : MonoBehaviour, IKillable
 	void Start ()
     {
         core = GameObject.Find("Core").transform;
-        SetEnemyLife();
+        SetEnemyType();
 	}
 	
 	void Update ()
     {
+        moveDistance = (moveSpeed * Time.deltaTime) * 1000;
+
+        CoreCollision();
+
         if (!isStunned)
         {
             gameObject.transform.LookAt(core);
             gameObject.transform.position = Vector3.MoveTowards(transform.position, core.position, Time.deltaTime * moveSpeed);
         }
 	}
+
+    void CoreCollision()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, moveDistance, coreLayer, QueryTriggerInteraction.Collide))
+        {
+            Debug.Log(type + " hit the core!");
+            hit.collider.gameObject.GetComponent<CoreBehaviour>().TakeHit(coreDamage);
+            Destroy(gameObject);
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawRay(transform.position, Vector3.forward  * 10f);
+    }
+
+    void AttackPlayer()
+    {
+        // if player attack
+        //if player close
+    }
 
     public virtual void TakeHit(int damage)
     {
@@ -59,7 +93,7 @@ public class EnemyBase : MonoBehaviour, IKillable
         heavy
     }
 
-    void SetEnemyLife()
+    void SetEnemyType()
     {
         if (type == enemyType.drone)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoreBehaviour : MonoBehaviour, IKillable
 {
-    [SerializeField]
+
     private Collider rangeDetector;
 
     public int coreHealth;
@@ -24,7 +24,7 @@ public class CoreBehaviour : MonoBehaviour, IKillable
 
     public virtual void TakeHit(int damage)
     {
-
+        coreHealth -= damage;
     }
 
     public virtual void Die()
