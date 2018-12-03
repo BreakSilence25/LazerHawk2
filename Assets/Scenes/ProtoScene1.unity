@@ -261,24 +261,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 632700474}
---- !u!1 &642221929 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1171073362185794, guid: 8643c96a6cd1fa74e929edffad5b57ae,
-    type: 2}
-  m_PrefabInternal: {fileID: 1587419182}
---- !u!114 &642221932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 642221929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc312b493be4794cb4421e1b84bac4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  core: {fileID: 0}
-  warning: {fileID: 0}
 --- !u!1 &659904543
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,19 +593,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1472393783312734, guid: 52a2049683bb47c40ad473715031791e, type: 2}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000,
-        type: 0}
-    - target: {fileID: 1267992077463766, guid: 52a2049683bb47c40ad473715031791e, type: 2}
-      propertyPath: m_Name
-      value: MainCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267992077463766, guid: 52a2049683bb47c40ad473715031791e, type: 2}
-      propertyPath: m_TagString
-      value: MainCamera
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52a2049683bb47c40ad473715031791e, type: 2}
   m_IsPrefabParent: 0
@@ -733,16 +702,6 @@ Prefab:
     - target: {fileID: 4816241293366920, guid: 8643c96a6cd1fa74e929edffad5b57ae, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 136408096384026426, guid: 8643c96a6cd1fa74e929edffad5b57ae,
-        type: 2}
-      propertyPath: m_Radius
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 135223459485217972, guid: 8643c96a6cd1fa74e929edffad5b57ae,
-        type: 2}
-      propertyPath: m_Radius
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8643c96a6cd1fa74e929edffad5b57ae, type: 2}
