@@ -8,8 +8,6 @@ public class IndicatorPanel : MonoBehaviour
 
     public Image indicator;
 
-    public Image[] OnScreenIndicators;
-
 	// Use this for initialization
 	void Start ()
     {
@@ -19,18 +17,16 @@ public class IndicatorPanel : MonoBehaviour
 	// Update is called once per frame
 	void LateUpdate ()
     {
-        paintIndicator();
+        RenderIndicator();
 	}
 
-    void paintIndicator()
+    void RenderIndicator()
     {
-
         EnemyBase[] objects = FindObjectsOfType(typeof(EnemyBase)) as EnemyBase[];
 
         foreach (EnemyBase obj in objects)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(obj.transform.position);
-            //indicator.transform.position = screenPos;
 
             if (screenPos.z > 0 && screenPos.x < Screen.width && screenPos.x > 0 && screenPos.y < Screen.height && screenPos.y > 0)
             {
@@ -41,6 +37,16 @@ public class IndicatorPanel : MonoBehaviour
             {
                 indicator.GetComponent<Image>().enabled = false;
             }
+        }
+
+    }
+
+    void ClearPool()
+    {
+        GameObject[] indicators = GameObject.FindGameObjectsWithTag("Indicator");
+        foreach (GameObject item in indicators)
+        {
+            Destroy(item);
         }
     }
 }
