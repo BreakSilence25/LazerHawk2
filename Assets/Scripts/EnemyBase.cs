@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour, IKillable
 {
 
+    public float dirMultiplier = 1f;
+    public float currentDistance;
+
     public LayerMask coreLayer;
 
     public int health;
@@ -17,8 +20,11 @@ public class EnemyBase : MonoBehaviour, IKillable
     private enemyType type;
     [SerializeField]
     private Transform core;
+    [SerializeField]
+    private GameObject deathFX;
 
     bool isStunned = false;
+    bool isInvinceble = false;
     float stunTime;
 	
 	void Start ()
@@ -42,22 +48,13 @@ public class EnemyBase : MonoBehaviour, IKillable
 
     void CoreCollision()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
+        currentDistance = Vector3.Distance(transform.position, core.position);
 
-        if (Physics.Raycast(ray, out hit, moveDistance, coreLayer, QueryTriggerInteraction.Collide))
+        if (currentDistance < 10f)
         {
-            Debug.Log(type + " hit the core!");
-            hit.collider.gameObject.GetComponent<CoreBehaviour>().TakeHit(coreDamage);
-            Destroy(gameObject);
+            Debug.Log("distance closed!");
+            StartCoroutine(BreachTimer());
         }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawRay(transform.position, Vector3.forward  * 10f);
     }
 
     void AttackPlayer()
@@ -68,21 +65,31 @@ public class EnemyBase : MonoBehaviour, IKillable
 
     public virtual void TakeHit(int damage)
     {
-        if (health <= 0)
+        if (isInvinceble)
         {
-            Die();
+            if (health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                health -= damage;
+                isStunned = true;
+                StartCoroutine(StunTimer());
+            }
         }
         else
         {
-            health -= damage;
-            isStunned = true;
-            StartCoroutine(StunTimer());
+            //play invinceble sfx
+            return;
         }
 
     }
 
+    [ContextMenu("Die")]
     public virtual void Die()
     {
+        Instantiate(deathFX, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 
@@ -111,7 +118,17 @@ public class EnemyBase : MonoBehaviour, IKillable
 
     IEnumerator StunTimer()
     {
+
         yield return new WaitForSeconds(stunTime);
         isStunned = false;
+    }
+
+    IEnumerator BreachTimer()
+    {
+        isInvinceble = true;
+        //play breach sfx
+        yield return new WaitForSeconds(3);
+        core.GetComponent<CoreBehaviour>().TakeHit(coreDamage);
+        Die();
     }
 }

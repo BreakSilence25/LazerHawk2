@@ -252,15 +252,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298904f224fda224c95002a3fd178398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dirMultiplier: 1
+  currentDistance: 0
   coreLayer:
     serializedVersion: 2
     m_Bits: 512
   health: 0
-  moveSpeed: 4
+  moveSpeed: 10
   coreDamage: 25
   moveDistance: 0
   type: 0
   core: {fileID: 0}
+  deathFX: {fileID: 1840179177420460, guid: efbd8b7902c07e840bc85b2ff396eae0, type: 2}
 --- !u!136 &136306449285285370
 CapsuleCollider:
   m_ObjectHideFlags: 1

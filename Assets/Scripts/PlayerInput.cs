@@ -12,6 +12,8 @@ public class PlayerInput : MonoBehaviour
 
     bool powered = true;
 
+    bool inputEnabled = true;
+
 	void Start ()
     {
         Cursor.visible = false;
@@ -22,20 +24,23 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        float u = Input.GetAxisRaw("Altitude");
-
-        float rh = Input.GetAxisRaw("Mouse X");
-        float rv = Input.GetAxisRaw("Mouse Y");
-        float ru = Input.GetAxisRaw("Rotational");
-
-        moveInput = new Vector3(h, u, v);
-        rotateInput = new Vector3(rv, rh, ru);
-
-        if(Input.GetKeyDown(KeyCode.P))
+        if (inputEnabled)
         {
-            powered = !powered;
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
+            float u = Input.GetAxisRaw("Altitude");
+
+            float rh = Input.GetAxisRaw("Mouse X");
+            float rv = Input.GetAxisRaw("Mouse Y");
+            float ru = Input.GetAxisRaw("Rotational");
+
+            moveInput = new Vector3(h, u, v);
+            rotateInput = new Vector3(rv, rh, ru);
+
+            if(Input.GetKeyDown(KeyCode.P))
+            {
+                powered = !powered;
+            }
         }
     }
 
@@ -44,4 +49,16 @@ public class PlayerInput : MonoBehaviour
         //send Input
         shipBehaviour.MoveInput(moveInput, rotateInput, powered);
 	}
+
+    public void DisableInput(bool state)
+    {
+        if (inputEnabled)
+        {
+            inputEnabled = state;
+        }
+        else
+        {
+            return;
+        }
+    }
 }
