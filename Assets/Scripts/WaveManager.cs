@@ -35,6 +35,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField]
     private spawnState state = spawnState.COUNTING;
 
+    public AudioClip startWaveSound;
+
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
@@ -76,8 +78,15 @@ public class WaveManager : MonoBehaviour
     {
         Debug.Log("Wave Completed");
 
-        state = spawnState.COUNTING;
-        waveCountdown = timeBetweenWaves;
+        if (!GameObject.Find("Core").GetComponent<CoreBehaviour>().isDead)
+        {
+            state = spawnState.COUNTING;
+            waveCountdown = timeBetweenWaves;
+        }
+        else
+        {
+            return;
+        }
 
         if (nextWave + 1 > waves.Length - 1)
         {
@@ -108,6 +117,7 @@ public class WaveManager : MonoBehaviour
     {
         Debug.Log("Spawning Wave: " + _wave.waveName);
         state = spawnState.SPAWNING;
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(startWaveSound);
 
         //spawn
         for (int i = 0; i < _wave.enemyCount; i++)

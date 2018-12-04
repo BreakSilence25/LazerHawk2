@@ -11,8 +11,7 @@ public class ShipBehaviour : MonoBehaviour, IKillable
     bool isPowered = false;
     float shipSpeed = 150f;
 
-    [SerializeField]
-    private int shipHealth;
+    public int shipHealth;
 
     private WeaponBase weaponSystem;
     private Rigidbody shipRigidbody;

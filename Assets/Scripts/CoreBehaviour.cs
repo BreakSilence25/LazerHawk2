@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CoreBehaviour : MonoBehaviour, IKillable
 {
@@ -9,12 +10,13 @@ public class CoreBehaviour : MonoBehaviour, IKillable
     private Collider rangeDetector;
 
     public GameObject gameOverPanel;
+    public GUIGameOverText gameOverText;
     [SerializeField]
     private GameObject coreDeathFX;
 
     public int coreHealth;
 
-    bool isDead = false;
+    public bool isDead = false;
 
 	void Start ()
     {
@@ -22,7 +24,7 @@ public class CoreBehaviour : MonoBehaviour, IKillable
 
         gameOverPanel = GameObject.Find("GameOverPanel");
         gameOverPanel.GetComponent<Image>().enabled = false;
-
+        gameOverText = GameObject.Find("GameOverText").GetComponent<GUIGameOverText>();
 	}
 	
 	void Update ()
@@ -53,10 +55,12 @@ public class CoreBehaviour : MonoBehaviour, IKillable
     {
         if (!isDead)
         {
-            GameObject.Find("coreMesh").SetActive(false);
-            GameObject.Find("Ship").GetComponent<PlayerInput>().DisableInput(false);
-            Camera.main.transform.LookAt(transform.position);
-            Instantiate(coreDeathFX, transform.position, transform.rotation);
+            isDead = true;
+            EnemyBase[] allEnemies = FindObjectsOfType(typeof(EnemyBase)) as EnemyBase[];
+            foreach (EnemyBase enemy in allEnemies)
+            {
+                enemy.Die();
+            }
             StartCoroutine(StartGameOver());
         }
         else if (isDead)
@@ -67,7 +71,22 @@ public class CoreBehaviour : MonoBehaviour, IKillable
 
     IEnumerator StartGameOver()
     {
-        yield return new WaitForSeconds(5f);
+
+        GameObject.Find("Ship").GetComponent<PlayerInput>().DisableInput(false);
+        Camera.main.transform.LookAt(transform.position);
+
+        yield return new WaitForSeconds(3f);
+
+        Instantiate(coreDeathFX, transform.position, transform.rotation);
+        Camera.main.GetComponent<CameraShake>().isShaked = true;
+
+        GameObject.Find("coreMesh").SetActive(false);
+
+        yield return new WaitForSeconds(4f);
         gameOverPanel.GetComponent<Image>().enabled = true;
+        yield return new WaitForSeconds(1f);
+        gameOverText.StartTyping();
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(0);
     }
 }

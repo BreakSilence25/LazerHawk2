@@ -14,10 +14,11 @@ public class PlayerInput : MonoBehaviour
 
     bool inputEnabled = true;
 
+    public float zoomFov = 30f;
+    private float normalFov = 60f;
+
 	void Start ()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
 
         shipBehaviour = GetComponent<ShipBehaviour>();
 	}
@@ -40,6 +41,15 @@ public class PlayerInput : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.P))
             {
                 powered = !powered;
+            }
+
+            if (Input.GetMouseButton(1))
+            {
+                Camera.main.fieldOfView = zoomFov;
+            }
+            else if (!Input.GetMouseButton(1))
+            {
+                Camera.main.fieldOfView = normalFov;
             }
         }
     }

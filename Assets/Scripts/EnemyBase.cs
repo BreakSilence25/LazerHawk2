@@ -65,7 +65,7 @@ public class EnemyBase : MonoBehaviour, IKillable
 
     public virtual void TakeHit(int damage)
     {
-        if (isInvinceble)
+        if (!isInvinceble)
         {
             if (health <= 0)
             {

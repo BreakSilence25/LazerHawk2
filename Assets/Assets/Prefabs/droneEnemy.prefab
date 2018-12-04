@@ -258,7 +258,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   health: 0
-  moveSpeed: 10
+  moveSpeed: 5
   coreDamage: 25
   moveDistance: 0
   type: 0
