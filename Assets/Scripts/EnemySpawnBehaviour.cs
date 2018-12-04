@@ -16,6 +16,7 @@ public class EnemySpawnBehaviour : MonoBehaviour
     [ContextMenu("Spawn Enemy")]
     void SpawnEnemy()
     {
+
         Instantiate(enemy, transform.position, transform.rotation);
     }
 }

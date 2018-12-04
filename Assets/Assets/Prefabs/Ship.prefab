@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 81582999640869676}
   - component: {fileID: 82107474731582662}
   - component: {fileID: 114260767056495672}
+  - component: {fileID: 114705747314004658}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -60,9 +61,9 @@ GameObject:
   - component: {fileID: 114691095598142392}
   - component: {fileID: 114118533786203914}
   - component: {fileID: 82145858047120146}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,7 +212,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 5
+  m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -227,7 +228,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.5, z: 0.8}
+  m_Size: {x: 0.49, y: 0.32, z: 0.47}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &81582999640869676
 AudioListener:
@@ -409,7 +410,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 114720909779794448, guid: 4fb494a23572dd24bb019214292725c9,
     type: 2}
-  projectileSpawns: []
+  projectileSpawns:
+  - {fileID: 4784717142609766}
+  - {fileID: 4767227221926138}
   shotSound: {fileID: 8300000, guid: 00e93a6f7eb263b4396b4ff3a11fba2d, type: 3}
   msBetweenShots: 210
 --- !u!114 &114260767056495672
@@ -427,6 +430,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6722866c2d952ad4388adc066fae2afd, type: 3}
   - {fileID: 8300000, guid: 6f0f9c402bcd9de4193ffa668c5793cf, type: 3}
   musicPlayer: {fileID: 0}
+  index: 1
 --- !u!114 &114476500541818438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -438,6 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6fb8c9905b5df43839c05fbd0439c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoomFov: 30
 --- !u!114 &114691095598142392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,6 +455,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipHealth: 0
+  gameOverPanel: {fileID: 0}
+  isDead: 0
+--- !u!114 &114705747314004658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1267992077463766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a19c3121b8113408aa39b90a145f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 4420167021434844}
+  shakeDuration: 3
+  shakeAmount: 0.9
+  decreaseFactor: 1
+  isShaked: 0
 --- !u!124 &124706578940486092
 Behaviour:
   m_ObjectHideFlags: 1

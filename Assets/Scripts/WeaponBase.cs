@@ -21,9 +21,6 @@ public class WeaponBase : MonoBehaviour
 	
 	void Start ()
     {
-        projectileSpawns.Add(GameObject.Find("ProjectileSpawn1").transform);
-        projectileSpawns.Add(GameObject.Find("ProjectileSpawn2").transform);
-
         gunSound = GetComponent<AudioSource>();
 
 	}

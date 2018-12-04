@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShipBehaviour : MonoBehaviour, IKillable
 {
@@ -16,12 +18,19 @@ public class ShipBehaviour : MonoBehaviour, IKillable
     private WeaponBase weaponSystem;
     private Rigidbody shipRigidbody;
 
+    public GameObject gameOverPanel;
+
+    public bool isDead = false;
+
     void Start()
     {
         weaponSystem = GetComponent<WeaponBase>();
         shipRigidbody = GetComponent<Rigidbody>();
 
         shipHealth = 100;
+
+        gameOverPanel = GameObject.Find("GameOverPanel");
+        gameOverPanel.GetComponent<Image>().enabled = false;
     }
 
     void Update()
@@ -60,12 +69,30 @@ public class ShipBehaviour : MonoBehaviour, IKillable
 
     public virtual void TakeHit(int damage)
     {
-
+        if (shipHealth <= 0 && !isDead)
+        {
+            isDead = true;
+            Die();
+        }
+        else
+        {
+            shipHealth -= damage;
+        }
     }
 
+    [ContextMenu("Die")]
     public virtual void Die()
     {
+        StartCoroutine(DeathGameOver());
+    }
 
+    IEnumerator DeathGameOver()
+    {
+        gameOverPanel.GetComponent<Image>().enabled = true;
+        yield return new WaitForSeconds(1f);
+        GameObject.Find("GameOverText").GetComponent<GUIGameOverText>().StartTyping();
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(0);
     }
 
 }

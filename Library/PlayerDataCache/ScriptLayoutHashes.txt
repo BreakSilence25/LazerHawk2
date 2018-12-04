@@ -4,6 +4,7 @@ C:/Users/alexa/OneDrive/Desktop/lazerhawk2.exe
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/SurvivalScene.unity
+Assets/Scenes/HuntScene.unity
 SceneListEnd?
 167ac7733aef84c140e745eebd370d32 Assembly-CSharp.dll:.Projectile
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -18,8 +19,10 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 92d7a83ea3c7404e484f3b2eed421855 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 92d7a83ea3c7404e484f3b2eed421855 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-029455aa2ffc859a47fa025974d4d460 Assembly-CSharp.dll:.ShipBehaviour
-3c607f5b86cdb7ed36326b0a66cea497 Assembly-CSharp.dll:.SoundtrackPlayer
+a16b8cf64a9743254d36702f98036f03 Assembly-CSharp.dll:.MainMenuManager
+33021e5135f9b037fe56d67a32497e5f Assembly-CSharp.dll:.ShipBehaviour
+4ae7723917f578ae51e6a9c54cfbb8e4 Assembly-CSharp.dll:.CameraShake
+b2a50f1e6c19ae02ccd26d0382f02734 Assembly-CSharp.dll:.SoundtrackPlayer
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -84,6 +87,7 @@ c63db43c730fa2cbb8ca07de15898cb6 UnityEngine.UI.dll:UnityEngine.UI.Toggle
 f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
+4944c1a859788b05a271d8e3350ff7f8 Assembly-CSharp.dll:.GUICoreStatus
 175693a7a6f81c6982b5c432d8d52543 Assembly-CSharp.dll:.EnemyBase
 3a1c064cf6a066bfbcc59a30bbcb12c9 Assembly-CSharp.dll:.CoreBehaviour
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -124,6 +128,8 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9b12eff897bc41a00fa4821f9baff027 Assembly-CSharp.dll:.WarningBehaviour
+ae5fd8dfd1be1521cee5bade2ed252ba Assembly-CSharp.dll:.GUIPlayerStatus
+c83b1c6b513440d0c63e65875d4ba1cd Assembly-CSharp.dll:.GUIGameOverText
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -157,12 +163,11 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-5344fbf3c0b5a81c5cd05ff296032465 Assembly-CSharp.dll:.IndicatorPanel
-97213481aa1defa044862c29b69e6568 Assembly-CSharp.dll:.WeaponBase
-4944c1a859788b05a271d8e3350ff7f8 Assembly-CSharp.dll:.GUICoreStatus
-ae5fd8dfd1be1521cee5bade2ed252ba Assembly-CSharp.dll:.GUIPlayerStatus
-c83b1c6b513440d0c63e65875d4ba1cd Assembly-CSharp.dll:.GUIGameOverText
-a16b8cf64a9743254d36702f98036f03 Assembly-CSharp.dll:.MainMenuManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AutoRotation
 3beaceedcc8180d3038da4848277ba33 Assembly-CSharp.dll:.PauseManager
-4ae7723917f578ae51e6a9c54cfbb8e4 Assembly-CSharp.dll:.CameraShake
+5344fbf3c0b5a81c5cd05ff296032465 Assembly-CSharp.dll:.IndicatorPanel
+97213481aa1defa044862c29b69e6568 Assembly-CSharp.dll:.WeaponBase
+69876f1275594ff61daeea7838121618 Assembly-CSharp.dll:.TankBehaviour
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AutoLookAt
+d8e7037a6806b5158196517147a7c329 Assembly-CSharp.dll:.AutoDeath
+09a1491677094622816adb2d90650975 Assembly-CSharp.dll:.GUIEnemyCount

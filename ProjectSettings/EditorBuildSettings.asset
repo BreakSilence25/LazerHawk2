@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SurvivalScene.unity
     guid: 00bb30f72d8c11649b4c68a452319b11
+  - enabled: 1
+    path: Assets/Scenes/HuntScene.unity
+    guid: 0623670f712a78f42b93cfa9d13a75c2

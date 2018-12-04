@@ -19,7 +19,7 @@ public class Projectile : FadeEffect
     }
 	
 	// Update is called once per frame
-	void FixedUpdate ()
+	void Update ()
     {
         float moveDistance = speed * Time.deltaTime;
         projectileRigidbody.AddRelativeForce(Vector3.forward * 200f);
@@ -30,6 +30,8 @@ public class Projectile : FadeEffect
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
+
+        Debug.DrawRay(transform.position, transform.forward, Color.green);
 
         if (Physics.Raycast(ray, out hit, moveDistance, collisionMask, QueryTriggerInteraction.Collide))
         {

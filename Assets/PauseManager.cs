@@ -8,11 +8,6 @@ public class PauseManager : MonoBehaviour
 
     public GameObject pausePanel;
 
-    void Start ()
-    {
-
-    }
-
 	void Update ()
     {
 

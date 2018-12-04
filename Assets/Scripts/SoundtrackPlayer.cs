@@ -8,7 +8,7 @@ public class SoundtrackPlayer : MonoBehaviour
 
     public AudioSource musicPlayer;
 
-    private int index;
+    public int index;
 
     private void Start()
     {
@@ -19,7 +19,6 @@ public class SoundtrackPlayer : MonoBehaviour
     {
         if (!musicPlayer.isPlaying)
         {
-            index++;
             playMusic(index);
         }
         else
