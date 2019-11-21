@@ -28,7 +28,7 @@ public class IndicatorPanel : MonoBehaviour
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(obj.transform.position);
 
-            if (screenPos.z > 0 && screenPos.x < Screen.width && screenPos.x > 0 && screenPos.y < Screen.height && screenPos.y > 0)
+            if (screenPos.z > 0 && screenPos.x < Screen.width && screenPos.x > 0 && screenPos.y < Screen.height && screenPos.y > 0 && screenPos.z >= 0)
             {
                 indicator.GetComponent<Image>().enabled = true;
                 indicator.rectTransform.position = screenPos;
